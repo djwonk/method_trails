@@ -9,11 +9,13 @@ I hope that visualizations created by MethodTrails give these benefits:
 
 2. Improve overall, big-picture understanding of such code.
 
-3. Ease integration with existing libraries, by making it clear which method are high level and thus intended to be used.
+3. Ease integration with existing libraries, by making it clear which method
+are high level and thus intended to be used.
 
 ## Design Constraints ##
 
-To implement these objectives, I wanted to satisfy two design criteria (i.e. constraints):
+To implement these objectives, I wanted to satisfy two design criteria (i.e.
+constraints):
 
 1. Be able to visualize an arbitrary Ruby source file -- even if it does not
 have a test suite.
@@ -27,7 +29,8 @@ Rails. (See the section below for more information.) Generally speaking, these
 tools use one or more of these techniques:
 
 * Read Ruby source directly (i.e. using parsing of some kind)
-* Load Ruby source into an interpreter and reflect (i.e using ObjectSpace and other reflection methods)
+* Load Ruby source into an interpreter and reflect (i.e using ObjectSpace and
+  other reflection methods)
 * Hook into Ruby source at runtime (i.e with DTrace or similar)
 
 Given the dynamic nature of the Ruby language, potentially the most powerful
@@ -56,7 +59,12 @@ It is quite simple; you pass in the Ruby file and you get out an s-expression.
 
 ## S-Expression Extraction ##
 
-Though the parsing was easy thanks to Ripper, extracting the proper information out of the s-expression was not quite as straightforward.  In my first attempts, I wrote specific, targeted recursive functions that went digging in the s-expression for exactly the information they needed while navigating around the various s-expression symbols.  This approach appeared to be the simplest at first, but it turned out to have many drawbacks:
+Though the parsing was easy thanks to Ripper, extracting the proper
+information out of the s-expression was not quite as straightforward. In my
+first attempts, I wrote specific, targeted recursive functions that went
+digging in the s-expression for exactly the information they needed while
+navigating around the various s-expression symbols. This approach appeared to
+be the simplest at first, but it turned out to have many drawbacks:
 
 1. It was hard to test.
 
@@ -67,7 +75,8 @@ recursive functions.
 3. It wasn't very elegant. Come on, this was supposed to be a fun project, not
 a hack. Elegance matters.
 
-4. It wasn't very generalizable.  Why write multiple, hard-coded, one-off recursive descent processors when you could write one general one instead?
+4. It wasn't very generalizable. Why write multiple, hard-coded, one-off
+recursive descent processors when you could write one general one instead?
 
 These drawbacks motivated me to redesign the code.
 
@@ -80,9 +89,10 @@ information and then spits out a dot file that you can open up using Graphviz.
 
 My first attempt at the selector engine did a tail-first match. In other
 words, it matched the end of a rule first, then worked its way backwards. I am
-only recently learning about parsers, but I think this approach might be a bottom-up parse. This approach worked well initially.
-However, I ran into problems with it; I'm not sure if they were inherent
-limitations of the approach or my own understanding of it.
+only recently learning about parsers, but I think this approach might be a
+bottom-up parse. This approach worked well initially. However, I ran into
+problems with it; I'm not sure if they were inherent limitations of the
+approach or my own understanding of it.
 
 My second attempt used a head-first match, where the front of a rule is
 matched first, and then works its way forward. This approach seemed more
@@ -107,9 +117,13 @@ Try doing something like that with CSS selectors. I realize and am not
 necessarily ashamed that this syntax appears to be some evil variant of
 reverse polish notation.
 
-BTW, if anyone would like to help write a DSL to make the selector rules easier to read for humans, please contact me.  I think this would be a fun TreeTop project.
+BTW, if anyone would like to help write a DSL to make the selector rules
+easier to read for humans, please contact me. I think this would be a fun
+TreeTop project.
 
-Of course, you don't need to know any of this to use MethodTrails.  But I thought I would share this in case you want to leverage the s-expression selector engine.
+Of course, you don't need to know any of this to use MethodTrails. But I
+thought I would share this in case you want to leverage the s-expression
+selector engine.
 
 ## History ##
 
@@ -119,7 +133,8 @@ of the project itself.
 
 I guess you could say that I've been wanting a tool like MethodTrail for quite
 a while. Around April 2007, I created a patch for ActiveRecord. While doing
-so, I made lots of little notes and visuals to keep track of the relationships between methods.  Having a tool to help would have been useful.
+so, I made lots of little notes and visuals to keep track of the relationships
+between methods. Having a tool to help would have been useful.
 
 A more recent example from May 2008 actually drove me to create this library.
 I read several examples online of how to use Net::HTTP to make an SSL HTTP
@@ -137,4 +152,3 @@ graphical image.
 There are many visualization tools for Ruby in the wild. In the future, I hope
 to list them in this section so that readers may find tools best suited to
 their needs.
-
