@@ -9,7 +9,7 @@ I hope that visualizations created by MethodTrails give these benefits:
 
 2. Improve overall, big-picture understanding of such code.
 
-3. Ease integration with existing libraries, by making it clear which method
+3. Ease integration with existing libraries, by making it clear which methods
 are high level and thus intended to be used.
 
 ## Design Constraints ##

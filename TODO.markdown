@@ -13,5 +13,5 @@ MethodTrails TODO
   
 2. Create and add it to 'Get It' section in README
 
-  `$ sudo gem install method-trails`
+  `$ sudo gem install djwonk-method-trails`
 
