@@ -1,0 +1,79 @@
+# ===== INTRODUCTION =====
+#
+# S-expressions are a kind of data structure.  They have a lot of
+# associated meaning.  
+# 
+# However, at a literal level, you can think of them as arrays.  In this
+# library, s-expressions are represented as arrays -- arrays with an
+# arbitrary number of nested arrays inside it.
+#
+# An s-expression may contain
+#   * another s-expression, or
+#   * an atom
+#
+# Though an s-expression may *contain* an atom, an s-expression is
+# *never* the same kind of thing as an atom.  Stated another way,
+# s-expressions and atoms are disjoint.
+#
+# Note that s-expressions can represent different things.  In the case
+# of the RubyGraph library, they are used to represent:
+#   1. A 'subject' (i.e. the result of a Ripper parsing)
+#   2. A rule (i.e. a specification of a matching rule)
+#
+# Therefore, if you see 's-expression' mentioned in the code, it may be
+# important to know if it represents a subject or a rule.
+#
+# ===== CLARIFICATION OF SIBLINGS AND CHILDREN =====
+#
+# Also, when it comes to s-expressions, siblings and children may
+# sometimes be confusing.  In an attempt to reduce that confusion, let
+# me differentitate between siblings:
+#   * literal siblings
+#   * semantic siblings
+#
+# And let me differentitate between children:
+#   * literal children
+#   * semantic children
+#
+# I will explain what the above terms mean in context.  Let me clarify
+# and explain in the context of two data structures:
+#
+#   1. A generic nested Ruby array
+#
+#      As you iterate through this data structure, one at a time, you
+#      will find either:
+#      * an array, or
+#      * a scalar (a non-array)
+#
+#      In some cases, arrays may have literal siblings.  The same
+#      applies to scalars.
+#
+#      In some cases, arrays may have literal children.  But it does
+#      *not* make sense to say that a scalar has literal children,
+#      since it is impossible for a scalar to contain other things, by
+#      definition.
+#
+#      When speaking at the literal level, neither arrays nor scalars
+#      have semantic siblings or semantic children, by definition.
+#      However, arrays can be interpreted at a higher level.  This brings
+#      us to our next data structure.
+#    
+#   2. An s-expression (resulting from parsing Ruby code)
+#
+#      This data structure happens, in this program, to be implemented
+#      as a nested Ruby array.  An s-expression has meaning (semantics)
+#      attached to it.  Therefore when talking about s-expressions, it
+#      makes sense to talk about semantic siblings and semantic
+#      children.
+#
+#      As you iterate through an s-expression, one at a time, you will
+#      find either:
+#      * an s-expression, or
+#      * an atom
+#
+#      In some cases, s-expressions may have semantic siblings.  These
+#      semantic siblings are also be literal siblings.
+#
+#      In some cases, atoms may have semantic siblings.  These semantic
+#      siblings may also be literal siblings.  (confused)
+#
