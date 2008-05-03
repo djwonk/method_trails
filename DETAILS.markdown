@@ -51,7 +51,8 @@ can't peek inside a method definition of `rawls` and see that it calls the
 `veil_of_ignorance` method. Therefore, reflection would not be a sufficient
 means to accomplish my objectives.
 
-Not surprisingly, given the nature of my problem and the process of elimination, it was clear that I would need to rely on parsing.
+Not surprisingly, given the nature of my problem and the process of
+elimination, it was clear that I would need to rely on parsing.
 
 It turns out that the parsing was quite easy. MethodTrail relies on Ripper for
 parsing Ruby source. Ruby 1.9 includes Ripper as part of its standard library.
