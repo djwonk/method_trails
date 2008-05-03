@@ -99,21 +99,21 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(0, @rule.matches(@subject))
     assert_equal(nil, @rule.captured)
   end
-  # def test_ruin_sibling_adjacency_so_mismatch
-  #   @subject = 
-  #   [ :a,
-  #     [ :b,
-  #       [ "c1" ]
-  #     ],
-  #     "extra",
-  #     :n,
-  #     [ :o,
-  #       [ "p1" ]
-  #     ]
-  #   ].to_s_exp
-  #   assert_equal(0, @rule.matches(@subject)) # FAILS w/ 1
-  #   assert_equal(nil, @rule.captured)
-  # end
+  def test_ruin_sibling_adjacency_so_mismatch
+    @subject = 
+    [ :a,
+      [ :b,
+        [ "c1" ]
+      ],
+      "extra",
+      :n,
+      [ :o,
+        [ "p1" ]
+      ]
+    ].to_s_exp
+    assert_equal(0, @rule.matches(@subject)) # FAILS w/ 1
+    assert_equal(nil, @rule.captured)
+  end
   def test_sibling_child_mismatch
     @subject = 
     [ :a,
