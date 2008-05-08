@@ -136,11 +136,20 @@ class TestTrueAtom < Test::Unit::TestCase
   include ShouldBeAnAtom
 end
 
+# --------------------
+
 class TestIntegerToRegularAtom < Test::Unit::TestCase
   def setup
     @atom = 8.to_atom
   end
   include ShouldBeARegularAtom
+end
+
+class TestIntegerToCapturingAtom < Test::Unit::TestCase
+  def setup
+    @atom = 8.to_atom(false)
+  end
+  include ShouldBeACapturingAtom
 end
   
 class TestStringToRegularAtom < Test::Unit::TestCase
@@ -183,6 +192,50 @@ class TestSymbolToCapturingAtom < Test::Unit::TestCase
   include ShouldBeACapturingAtom
 end
 
+class TestTrueClassToRegularAtom < Test::Unit::TestCase
+  def setup
+    @atom = true.to_atom
+  end
+  include ShouldBeARegularAtom
+end
+
+class TestTrueClassToCapturingAtom < Test::Unit::TestCase
+  def setup
+    @atom = true.to_atom(false)
+  end
+  include ShouldBeACapturingAtom
+end  
+
+class TestFalseClassToRegularAtom < Test::Unit::TestCase
+  def setup
+    @atom = false.to_atom
+  end
+  include ShouldBeARegularAtom
+end
+
+class TestFalseClassToCapturingAtom < Test::Unit::TestCase
+  def setup
+    @atom = false.to_atom(false)
+  end
+  include ShouldBeACapturingAtom
+end  
+
+class TestNilClassToRegularAtom < Test::Unit::TestCase
+  def setup
+    @atom = nil.to_atom
+  end
+  include ShouldBeARegularAtom
+end
+
+class TestNilClassToCapturingAtom < Test::Unit::TestCase
+  def setup
+    @atom = nil.to_atom(false)
+  end
+  include ShouldBeACapturingAtom
+end  
+
+# --------------------
+
 class TestAttemptBuildingAtomFromArray < Test::Unit::TestCase
   def setup
     @attempted_contents = [:this, :should, :not, :work] 
@@ -196,6 +249,8 @@ class TestAttemptBuildingAtomFromHash < Test::Unit::TestCase
   end
   include ShouldNotBeConvertibleToAtom
 end
+
+# --------------------
 
 class TestRegularIntegerMatch < Test::Unit::TestCase
   def setup
@@ -273,6 +328,8 @@ class TestCapturingSymbolMatch < Test::Unit::TestCase
   include ShouldNotMatchAnyInteger
   include ShouldNotMatchAnyString
 end
+
+# --------------------
 
 class TestRegularIntegerCapture < Test::Unit::TestCase
   def setup

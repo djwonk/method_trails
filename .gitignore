@@ -1,2 +1,4 @@
 .DS_Store
-*.log
+example/_dot/*
+example/_s-exp/*
+example/_log/*

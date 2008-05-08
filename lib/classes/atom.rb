@@ -106,9 +106,14 @@ class MethodTrails
 end
 
 module Atomable
-  def to_atom(disable_capturing = false)
-    # Create a regular atom
-    MethodTrails::Atom.new(self)
+  def to_atom(disable_capturing = true)
+    if disable_capturing
+      # Create a regular atom
+      MethodTrails::Atom.new(self)
+    else
+      # Create a capturing atom
+      MethodTrails::Atom.new(self, true)
+    end
   end
 end
 
