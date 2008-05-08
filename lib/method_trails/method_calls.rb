@@ -9,30 +9,38 @@ class MethodTrails
 
     attr_accessor :log_filename
 
-    # Returns a hash of (key, value) pairs, where:
-    #   key   : name of the 'source' method
-    #   value : array of names of methods called in the 'source' method
+    # Returns a hash that contains the information extracted when running
+    # the rules.
     #
-    # For example:
+    # Typically the top level of the hash contains keys that match up with
+    # the labels of the various rules.  For example:
     #
-    #   If the Ruby source file contained:
-    #     def water(x, y, z)
-    #       hydrogen + oxygen + hydrogen
-    #     end
-    #     def hydrogen
-    #       atom
-    #     end
-    #     def oxygen
-    #       atom
-    #     end
+    #   :classes_and_i_methods
+    #   :i_methods_and_ids
     #
-    #   Then get_method_calls should return:
-    #     {
-    #       "water"    => ["hydrogen", "oxygen", "hydrogen" ],
-    #       "hydrogen" => ["atom"],
-    #       "oxygen"   => ["atom"]
-    #     }
+    # Below the top level, the hash's structure is driven by what each rule
+    # requests to be captured.  For example:
     #
+    #   { :classes_and_i_methods =>
+    #     [
+    #       {
+    #         "class" => ["MusicalPerformance"],
+    #         "def"   => ["initialize"]
+    #       }
+    #     ]
+    #   }
+    #
+    #   Or another example:
+    #
+    #   { :i_methods_and_ids => 
+    #     [
+    #       {
+    #         "ident" => ["announce_song", "gets_quieter"],
+    #         "def"   => ["initialize",    "initialize"]
+    #       }
+    #     ]
+    #   }
+    # 
     def get_method_calls(s_exp)
       raise "SExp expected" unless s_exp.s_exp?
       t = Traverser.new(s_exp)

@@ -14,6 +14,17 @@ class MethodTrails
         #   +ry+      : right part of rule (Atom or SExp)
         #   +subject+ : the subject being explored (SExp)
         #
+        # Interestingly, most of the logic in this code treats each type of
+        # rule in much the same way.  Rule types only differ in two ways:
+        #
+        #   1. Where they look for matches right now
+        #      (See each_typed_rule for more information.  It ultimately
+        #      relies on each_possible_matches_with_index.)
+        #
+        #   2. Where they explore for matches in the future
+        #      (See each_future for more information.  It ultimately relies
+        #      on get_future_for_type.)
+        #
         def each_typed_rule(type, rx, ry, subject, match, &b)
           each_typed_rule_match(type, rx, subject, match, true) do |match_x|
             each_future(type, match_x) do |nested|
@@ -31,8 +42,13 @@ class MethodTrails
         # Match object will guide the caller.  Note that +rule+ is either
         # an Atom or SExp, not a Rule.
         #
-        #  +permissive+ : Be more permissive with atom matching.
-        #               : See context in +each_typed_rule+.
+        # Parameters:
+        #   +type+       : rule type (Symbol), i.e. :__child
+        #   +rule+       : either Atom or SExp
+        #   +subject+    : the subject being explored (SExp)
+        #   +match+      : Match object, stores information about the match
+        #   +permissive+ : Be more permissive with atom matching.
+        #                : See context in +each_typed_rule+.
         def each_typed_rule_match(type, rule, subject, match, permissive, &b)
           if rule.atom?
             process_rule_atom(type, rule, subject, match, permissive, &b)
@@ -42,8 +58,12 @@ class MethodTrails
             raise RuleException, "Internal error"
           end
         end
-        
-        # +rule+ must be an SExp
+
+        # Parameters:
+        #   +type+       : rule type (Symbol), i.e. :__child
+        #   +rule+       : must be an SExp
+        #   +subject+    : the subject being explored (SExp)
+        #   +match+      : Match object, stores information about the match
         def process_typed_rule_s_exp(type, rule, subject, match, &b)
           each_match(rule, subject, match) do |match_1|
             _match = match_1.clone

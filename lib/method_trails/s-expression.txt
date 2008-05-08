@@ -74,6 +74,8 @@
 #      In some cases, s-expressions may have semantic siblings.  These
 #      semantic siblings are also be literal siblings.
 #
-#      In some cases, atoms may have semantic siblings.  These semantic
-#      siblings may also be literal siblings.  (confused)
+#      In some cases, atoms may have semantic siblings.
 #
+#      (This section needs elaboration)
+#
+#  (In general, I'm not sure how helpful this write-up is.)

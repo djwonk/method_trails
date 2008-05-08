@@ -1,4 +1,6 @@
 class MethodTrails
+  # This module is not currently used.
+  # Instead, I rely on parsing.  See DETAILS file.
   module Introspect
 
     # Get the names of classes defined in +input_full_filename+.

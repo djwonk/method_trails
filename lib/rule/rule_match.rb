@@ -10,11 +10,12 @@ class MethodTrails
     module RuleMatch
 
       # Each time +rule_s_exp+ matches +subject_s_exp+, iterate over block
-      # (+b+), passing a Match object as the parameter.
+      # (+b+), passing a Match object as the yield parameter.
       #
       # Parameters:
       #   +rule+    : s-expression for a Rule (or portion of a Rule)
       #   +subject+ : s-expression for the subject (i.e. parsed Ruby)
+      #   +match+   : Match object, stores information about the match
       #   +b+       : called for each match (block or lambda)
       #
       # Return value:
@@ -52,10 +53,14 @@ class MethodTrails
       
       # Process untyped +rule+ directly.  Untyped means that +rule+ does
       # not contain a type such as :__child, :__descendant, or so on.
-      #   +rule+    : must be SExp
-      #   +subject+ : must be SExp
       #
-      # (This is the base case of +each_match+.)
+      # Parameters:
+      #   +rule+    : s-expression for a Rule (or portion of a Rule)
+      #   +subject+ : the subject being explored (SExp)
+      #   +match+   : Match object, stores information about the match 
+      #   +b+       : called for each match (block or lambda)
+      #
+      # (To use recursion lingo, this is the base case of +each_match+.)
       def process_untyped_rule(rule, subject, match, &b)
         case rule.length
         when 1
@@ -66,9 +71,15 @@ class MethodTrails
       end
       
       # Process +rule+ that is only one atom.
-      #   +type+    : may be nil or a symbol
-      #   +rule+    : must be an Atom
-      #   +subject+ : must be SExp
+      #
+      # Parameters:
+      #   +type+       : may be nil or a symbol
+      #   +rule+       : portion of a Rule (Atom)
+      #   +subject+    : the subject being explored (SExp)
+      #   +match+      : Match object, stores information about the match
+      #   +permissive+ : Be more permissive with atom matching.
+      #                : (See context in +each_typed_rule+.)
+      #   +b+          : called for each match (block or lambda)
       def process_rule_atom(type, rule, subject, match, permissive, &b)
         unless rule.respond_to?(:atom?) && rule.atom?
           raise RuleException, "rule must be an Atom"
@@ -84,9 +95,12 @@ class MethodTrails
       end
       
       # Break apart +rule+ into sub-rules.
-      #   +type+ must be a Symbol, such as :__adjacent_sibling
-      #   +rule+ must be an SExp
-      #   +subject+ must be SExp
+      #
+      # Parameters:
+      #   +type+    : rule type (Symbol, such as :__adjacent_sibling)
+      #   +rule+    : Rule or portion of a Rule (SExp)
+      #   +subject+ : the subject being explored (SExp)
+      #   +match+   : Match object, stores information about the match
       #
       # (This is the recursion step of +each_match+.)
       def break_apart_typed_rule(type, rule, subject, match, &b)
@@ -102,9 +116,12 @@ class MethodTrails
       end
 
       # Process a rule (a binary relation) using typed rules.
-      #   +type+ must be a Symbol, such as :__general_sibling
-      #   +rule+ must be an SExp
-      #   +subject+ must be SExp
+      #
+      # Parameters:
+      #   +type+    : rule type (Symbol, such as :__general_sibling)
+      #   +rule+    : must be an SExp
+      #   +subject+ : the subject being explored (SExp)
+      #   +match+   : Match object, stores information about the match
       def process_binary_rule(type, rule, subject, match, &b)
         if type.is_a?(Array)
           raise RuleException, "Only simple type allowed here"
@@ -114,9 +131,12 @@ class MethodTrails
       end
 
       # Process a rule (a ternary relation) using typed rules.
-      #   +type+ must be a Symbol, such as :__descendant
-      #   +rule+ must be an SExp
-      #   +subject+ must be SExp
+      #
+      # Parameters:
+      #   +type+    : rule type (Symbol, such as :__child)
+      #   +rule+    : must be an SExp
+      #   +subject+ : the subject being explored (SExp)
+      #   +match+   : Match object, stores information about the match
       def process_ternary_rule(type, rule, subject, match, &b)
         rule_x, rule_y, rule_z = rule[1]
         type_xy, type_xz = convert_to_compound_type(type)
@@ -132,7 +152,9 @@ class MethodTrails
       end
 
       # Is +rule+ a typed rule?
-      #    +rule+ must be an SExp
+      #
+      # Parameters:
+      #   +rule+ : must be an SExp
       def get_type(rule)
         r0 = rule[0]
         types = [
@@ -152,6 +174,10 @@ class MethodTrails
         end
       end
       
+      # Ensure that type takes the form of [:__type_1, :__type_2]
+      #
+      # Parameters:
+      #   +type+ : rule type (Symbol or Array)
       def convert_to_compound_type(type)
         if type.is_a?(Symbol)
           [type, type]
@@ -162,6 +188,17 @@ class MethodTrails
         end
       end
 
+      # One of the most important ways that rule types differ is their
+      # "future".  In other words, what does a rule look forward to?
+      # 
+      # Let me explain:
+      #   * :__child      looks for semantic children
+      #   * :__descendant looks for semantic descendants
+      #   * :__*_sibling  looks for younger semantic siblings
+      #
+      # Parameters:
+      #   +type+  : must be a Symbol, such as :__child
+      #   +match+ : Match object, stores information about the match
       def get_future_for_type(type, match)
         case type
         when nil
@@ -176,7 +213,12 @@ class MethodTrails
           raise RuleException, "Unrecognized type: #{type}"
         end
       end
-      
+
+      # Iterate over the possible matches in +subject+ for a given +type+
+      #   +permissive+ : Be more permissive with atom matching.
+      #                : (See context in +each_typed_rule+.)
+      #   +type+       : must be a Symbol, such as :__descendant
+      #   +subject+    : must be SExp
       def each_possible_matches_with_index(permissive, type, subject)
         possibilities = case type
         when nil, :__child, :__descendant, :__general_sibling

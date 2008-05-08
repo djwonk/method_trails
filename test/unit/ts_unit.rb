@@ -6,4 +6,3 @@ require_relative '/rule_test'
 require_relative '/rules_test'
 require_relative '/s_exp_test'
 require_relative '/traverser_test'
-

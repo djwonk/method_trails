@@ -74,6 +74,8 @@ class MethodTrails
 
     def s_exp?; false end
 
+    # Human readable version of the atom.
+    # % signifies a capturing atom.
     def to_s
       if @capture_on
         "%" + @thing.to_s

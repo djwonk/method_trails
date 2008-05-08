@@ -35,6 +35,7 @@ class MethodTrails
       end
     end
     
+    # Return a pretty representation, i.e. indented nicely.
     def pretty
       @d = 0
       _pretty(self)
