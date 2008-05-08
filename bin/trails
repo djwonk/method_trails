@@ -14,8 +14,7 @@ require '/Users/djwonk/dev/side/method_trails/lib/method_trails'
 require 'optparse'
 
 # Point this to your installation of Graphviz.
-# I currently prefer Graphviz 1.13 over 2.x.
-GRAPHVIZ = "/Applications/Graphviz/Graphviz_1.13.app"
+GRAPHVIZ = "/Applications/Graphviz.app"
 
 BANNER = <<END
 Usage:

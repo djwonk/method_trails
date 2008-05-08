@@ -1,0 +1,45 @@
+digraph untitled
+{
+  graph [size=7.5,10];
+  graph [center=1];
+  graph [fontname=Arial];
+  graph [overlap=false];
+  graph [ratio=compress];
+  node [style=filled];
+  node [fillcolor="#DDDDDD"]
+  node [fontname=Arial];
+  node [fontsize=10];
+  edge [fontname=Arial];
+  edge [fontsize=10];
+
+  /* Classes and their Instance Methods */
+  subgraph cluster_1 {
+    label="Pythagoras";
+    color=blue;
+    "hypotenuse" [color=green];
+    "square_root" [color=green];
+    "sum_of_squares" [color=green];
+    "sum" [color=green];
+    "square" [color=green];
+    "multiply" [color=green];
+  }
+  
+  "hypotenuse" -> "square_root";
+  "hypotenuse" -> "sum_of_squares";
+  "hypotenuse" -> "a";
+  "hypotenuse" -> "b";
+  "square_root" -> "sqrt";
+  "square_root" -> "x";
+  "sum_of_squares" -> "sum";
+  "sum_of_squares" -> "square";
+  "sum_of_squares" -> "a";
+  "sum_of_squares" -> "square";
+  "sum_of_squares" -> "b";
+  "sum" -> "a";
+  "sum" -> "b";
+  "square" -> "multiply";
+  "square" -> "x";
+  "square" -> "x";
+  "multiply" -> "a";
+  "multiply" -> "b";
+}
