@@ -5,15 +5,10 @@ require_relative 'dot_output'
 class MethodTrails
   module FileHandling
 
-    # Returns +input_filename+ with Ruby extension.
-    def input_full_filename
-      input_filename + ".rb"
-    end
-
     # Reads entire file into memory, as an array of lines
     def read_input_file_as_lines
       text = nil
-      File.open(input_full_filename, "r") do |file|
+      File.open(input_filename, "r") do |file|
         text = file.readlines
       end
       text.map { |line| line.chomp }
@@ -22,7 +17,7 @@ class MethodTrails
     # Reads entire file into memory, as one string
     def read_input_file
       text = nil
-      File.open(input_full_filename, "r") do |file|
+      File.open(input_filename, "r") do |file|
         text = file.read
       end
       text

@@ -3,10 +3,10 @@ class MethodTrails
   # Instead, I rely on parsing.  See DETAILS file.
   module Introspect
 
-    # Get the names of classes defined in +input_full_filename+.
+    # Get the names of classes defined in +input_filename+.
     def get_class_names
       record_class_definitions do
-        load input_full_filename
+        load input_filename
         # Or, an alternative is to use the following:
         # require input_filename
       end

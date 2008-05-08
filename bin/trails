@@ -1,0 +1,82 @@
+#!/usr/local/bin/ruby
+# Requires Ruby 1.9
+
+
+# require 'require_relative'
+# require_relative '../lib/method_trails'
+
+# cd /usr/local/bin
+# ln -s /Users/djwonk/dev/side/method_trails/bin/trails trails
+#
+# This is a hack that lets /usr/local/bin/trails run from any directory
+# (It needs to be fixed when packaging up the gem)
+require '/Users/djwonk/dev/side/method_trails/lib/method_trails'
+require 'optparse'
+
+# Point this to your installation of Graphviz.
+# I currently prefer Graphviz 1.13 over 2.x.
+GRAPHVIZ = "/Applications/Graphviz/Graphviz_1.13.app"
+
+BANNER = <<END
+Usage:
+  trails [ruby_file]
+
+Description:
+  MethodTrails visualizes the method call graph of Ruby source code.  It
+  generates a dot file that can be viewed with Graphviz.
+  
+Options:
+END
+
+class Trails
+  def self.run
+    options = {}
+    OptionParser.new do |opts|
+      opts.banner = BANNER
+
+      opts.on_tail("-h", "--help", "Show this message") do
+        puts opts
+        exit
+      end  
+    end.parse!
+
+    # begin
+      input = ARGV.first
+      unless input
+        puts "No file specified"
+        exit 1 
+      end
+      unless File.file?(input) && File.exist?(input)
+        puts "Cannot find file: #{input}"
+        exit 1
+      end
+      MethodTrailRunner.run(input)
+      exit 0
+    # rescue Exception => e
+    #   raise e if e.is_a? SystemExit
+    #   $stderr.puts e.message
+    #   exit 1
+    # end
+  end
+end
+
+class MethodTrailRunner
+  def self.run(in_file)
+    base   = File.basename(in_file, ".rb") # => dog
+    subdir = File.join(File.dirname(in_file), "method_trails")
+    unless File.exist?(subdir)
+      Dir.mkdir(subdir)
+    end
+    
+    rv = MethodTrails.new
+    rv.input_filename  = in_file
+    rv.dot_filename    = File.join(subdir, "#{base}.dot")
+    rv.log_filename    = File.join(subdir, "#{base}.log")
+    rv.s_exp_filename  = File.join(subdir, "#{base}-sexp.rb")
+    rv.process
+    
+    `open #{GRAPHVIZ} #{rv.dot_filename}`
+  end
+end
+
+Trails.run
