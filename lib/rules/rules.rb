@@ -1,7 +1,7 @@
 require 'require_relative'
 require_relative '/actual/actual'
 
-class RubyGraph
+class MethodTrails
   class Rules
     
     # Load the 'actual' rules

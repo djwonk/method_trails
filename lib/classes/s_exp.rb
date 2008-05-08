@@ -1,7 +1,7 @@
 require 'require_relative'
 require_relative '/atom'
 
-class RubyGraph
+class MethodTrails
   class SExpException < RuntimeError; end
   class SExp < Array
     
@@ -102,7 +102,7 @@ end
 class Array
   
   def to_s_exp(disable_capturing = false)
-    s_exp = RubyGraph::SExp.new
+    s_exp = MethodTrails::SExp.new
     s_exp.disable_capturing = disable_capturing
     s_exp.replace(self)
     s_exp

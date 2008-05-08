@@ -1,7 +1,7 @@
 require 'require_relative'
 # require_relative '/../utility/debugging'
 
-class RubyGraph
+class MethodTrails
   class Rule
     module RuleMatch
       module TypedMatch

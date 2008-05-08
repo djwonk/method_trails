@@ -1,7 +1,7 @@
 require 'require_relative'
 require_relative '/../factory'
 
-class RubyGraph
+class MethodTrails
   class Rules
     module Practice
       

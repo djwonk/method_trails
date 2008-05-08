@@ -5,7 +5,7 @@ require_relative '/../classes/match'
 # require_relative '/../utility/abbreviate'
 # require_relative '/../utility/debugging'
 
-class RubyGraph
+class MethodTrails
   class Rule
     module RuleMatch
 

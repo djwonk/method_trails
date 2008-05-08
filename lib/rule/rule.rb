@@ -4,7 +4,7 @@ require_relative '/capture'
 require_relative '/../classes/match'
 # require_relative '/../utility/debugging'
 
-class RubyGraph
+class MethodTrails
   class RuleException < RuntimeError; end
   # A Rule describes a potential match with a 'subject' s-expression.
   #
@@ -43,7 +43,7 @@ class RubyGraph
     #   +subject+ : must be an SExp object
     #
     # If rule contains matching atoms, then the captured results will be
-    # stored.  See RubyGraph::Rule::Capture.
+    # stored.  See MethodTrails::Rule::Capture.
     def matches(subject)
       matches = 0
       # Create an initial match object to store the match head

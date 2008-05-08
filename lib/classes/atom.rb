@@ -1,4 +1,4 @@
-class RubyGraph
+class MethodTrails
   class AtomException < RuntimeError; end
   class Atom
     
@@ -108,7 +108,7 @@ end
 module Atomable
   def to_atom(disable_capturing = false)
     # Create a regular atom
-    RubyGraph::Atom.new(self)
+    MethodTrails::Atom.new(self)
   end
 end
 
@@ -121,10 +121,10 @@ class String
   def to_atom(disable_capturing=false)
     if disable_capturing || self[0] != '%'
       # Create a regular atom
-      RubyGraph::Atom.new(self)
+      MethodTrails::Atom.new(self)
     else
       # Create a capturing atom
-      RubyGraph::Atom.new(self[1..-1], true)
+      MethodTrails::Atom.new(self[1..-1], true)
     end
   end
 end
@@ -133,10 +133,10 @@ class Symbol
   def to_atom(disable_capturing = false)
     if disable_capturing || self[0] != '%'
       # Create a regular atom
-      RubyGraph::Atom.new(self)
+      MethodTrails::Atom.new(self)
     else
       # Create a capturing atom
-      RubyGraph::Atom.new(self[1..-1].intern, true)
+      MethodTrails::Atom.new(self[1..-1].intern, true)
     end
   end
 end

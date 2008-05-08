@@ -1,10 +1,10 @@
 require 'require_relative'
-require_relative '/ruby_graph/file_handling'
-require_relative '/ruby_graph/introspect'
-require_relative '/ruby_graph/method_calls'
-require_relative '/ruby_graph/parser'
+require_relative '/method_trails/file_handling'
+require_relative '/method_trails/introspect'
+require_relative '/method_trails/method_calls'
+require_relative '/method_trails/parser'
 
-class RubyGraph
+class MethodTrails
 
   attr_accessor :input_filename
   attr_accessor :dot_filename

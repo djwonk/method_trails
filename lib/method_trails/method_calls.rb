@@ -4,7 +4,7 @@ require_relative '/../classes/s_exp'
 require_relative '/../traverser/traverser'
 require_relative '/../rules/rules'
 
-class RubyGraph
+class MethodTrails
   module MethodCalls
 
     attr_accessor :log_filename

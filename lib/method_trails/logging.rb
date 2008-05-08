@@ -1,4 +1,4 @@
-class RubyGraph
+class MethodTrails
   module MethodCalls
     module Logging
 

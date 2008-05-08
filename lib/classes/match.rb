@@ -2,7 +2,7 @@ require 'require_relative'
 require_relative '/atom'
 require_relative '/s_exp'
 
-class RubyGraph
+class MethodTrails
   class MatchException < RuntimeError; end
   
   # A +Match+ is an object passed back from +each_match+ and its family of

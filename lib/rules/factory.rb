@@ -2,7 +2,7 @@ require 'require_relative'
 require_relative '/../rule/rule'
 require_relative '/../classes/s_exp'
 
-class RubyGraph
+class MethodTrails
   class Rules
     module Factory
 

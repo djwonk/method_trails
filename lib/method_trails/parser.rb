@@ -2,7 +2,7 @@ require 'require_relative'
 require 'ripper'
 require_relative '/../classes/s_exp'
 
-class RubyGraph
+class MethodTrails
   module Parser
 
     # Parses +text+.  Returns a +SExp+.

@@ -1,7 +1,7 @@
 require 'require_relative'
 require_relative '/../classes/atom'
 
-class RubyGraph
+class MethodTrails
   class Rule
     module Capture
 

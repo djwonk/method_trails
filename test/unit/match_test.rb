@@ -35,8 +35,8 @@ end
 
 class TestMatchConstructedFromFlatArray < Test::Unit::TestCase
   def setup
-    @s1 = RubyGraph::SExp.new([:a, :b, :c, :d, :e])
-    @m1 = RubyGraph::Match.new(@s1, 2, @s1, 2)
+    @s1 = MethodTrails::SExp.new([:a, :b, :c, :d, :e])
+    @m1 = MethodTrails::Match.new(@s1, 2, @s1, 2)
   end
   def test_head_index_reader
     assert_equal(2, @m1.head_index)
@@ -93,8 +93,8 @@ end
 
 class TestMatchConstructedFromNestedArray < Test::Unit::TestCase
   def setup
-    @s1 = RubyGraph::SExp.new([0, 1, [2, 3], 4, [5, 6], [7, 8], 9, 10, [11, 12]])
-    @m1 = RubyGraph::Match.new(@s1, 3, @s1, 3)
+    @s1 = MethodTrails::SExp.new([0, 1, [2, 3], 4, [5, 6], [7, 8], 9, 10, [11, 12]])
+    @m1 = MethodTrails::Match.new(@s1, 3, @s1, 3)
   end
   def test_head_index_reader
     assert_equal(3, @m1.head_index)
@@ -149,18 +149,18 @@ end
 
 class TestMatchEquality < Test::Unit::TestCase
   def setup
-    @s1 = RubyGraph::SExp.new([:a, :b, :c])
-    @m1 = RubyGraph::Match.new(@s1, 1, @s1, 1)
-    @s2 = RubyGraph::SExp.new([:a, :b, :c])
-    @m2 = RubyGraph::Match.new(@s2, 1, @s2, 1)
+    @s1 = MethodTrails::SExp.new([:a, :b, :c])
+    @m1 = MethodTrails::Match.new(@s1, 1, @s1, 1)
+    @s2 = MethodTrails::SExp.new([:a, :b, :c])
+    @m2 = MethodTrails::Match.new(@s2, 1, @s2, 1)
   end
   include MatchObjectsShouldBeEqualButDistinct
 end
 
 class TestMatchDuplication < Test::Unit::TestCase
   def setup
-    @s1 = RubyGraph::SExp.new([:a, :b, :c])
-    @m1 = RubyGraph::Match.new(@s1, 1, @s1, 1)
+    @s1 = MethodTrails::SExp.new([:a, :b, :c])
+    @m1 = MethodTrails::Match.new(@s1, 1, @s1, 1)
     @m2 = @m1.dup
   end
   include MatchInternalObjectsShouldBeDistinct
@@ -169,8 +169,8 @@ end
 
 class TestMatchCloning < Test::Unit::TestCase
   def setup
-    @s1 = RubyGraph::SExp.new([:a, :b, :c])
-    @m1 = RubyGraph::Match.new(@s1, 1, @s1, 1)
+    @s1 = MethodTrails::SExp.new([:a, :b, :c])
+    @m1 = MethodTrails::Match.new(@s1, 1, @s1, 1)
     @m2 = @m1.clone
   end
   include MatchInternalObjectsShouldBeDistinct
@@ -179,8 +179,8 @@ end
 
 class TestSemantics_0_1_2 < Test::Unit::TestCase
   def setup
-    @s = RubyGraph::SExp.new([0, [1, 2], 3, 4, [5, 6]])
-    @m = RubyGraph::Match.new(@s, 0, @s, 0)
+    @s = MethodTrails::SExp.new([0, [1, 2], 3, 4, [5, 6]])
+    @m = MethodTrails::Match.new(@s, 0, @s, 0)
   end
   def test_head_and_semantic_children
     assert_equal([0, [1, 2]].to_s_exp, @m.head_and_semantic_children)
@@ -200,8 +200,8 @@ end
 
 class TestSemantics_0_1_2n < Test::Unit::TestCase
   def setup
-    @s = RubyGraph::SExp.new([0, [1, [2]], 3, 4, [5, 6]])
-    @m = RubyGraph::Match.new(@s, 0, @s, 0)
+    @s = MethodTrails::SExp.new([0, [1, [2]], 3, 4, [5, 6]])
+    @m = MethodTrails::Match.new(@s, 0, @s, 0)
   end
   def test_head_and_semantic_children
     assert_equal([0, [1, [2]]].to_s_exp, @m.head_and_semantic_children)
@@ -222,8 +222,8 @@ end
  
 class TestSemantics_0_1n_2 < Test::Unit::TestCase
   def setup
-    @s = RubyGraph::SExp.new([0, [[1], 2], 3, 4, [5, 6]])
-    @m = RubyGraph::Match.new(@s, 0, @s, 0)
+    @s = MethodTrails::SExp.new([0, [[1], 2], 3, 4, [5, 6]])
+    @m = MethodTrails::Match.new(@s, 0, @s, 0)
   end
   def test_head_and_semantic_children
     assert_equal([0, [[1], 2]].to_s_exp, @m.head_and_semantic_children)
@@ -244,8 +244,8 @@ end
 
 class TestSemantics_0_1n_2n < Test::Unit::TestCase
   def setup
-    @s = RubyGraph::SExp.new([0, [[1], [2]], 3, 4, [5, 6]])
-    @m = RubyGraph::Match.new(@s, 0, @s, 0)
+    @s = MethodTrails::SExp.new([0, [[1], [2]], 3, 4, [5, 6]])
+    @m = MethodTrails::Match.new(@s, 0, @s, 0)
   end
   def test_head_and_semantic_children
     assert_equal([0, [[1], [2]]].to_s_exp, @m.head_and_semantic_children)
@@ -267,8 +267,8 @@ end
 
 class TestSemantics_0_1n_2n_3n_4n < Test::Unit::TestCase
   def setup
-    @s = RubyGraph::SExp.new([0, [[1], [2]], [[3], [4]], 5, 6])
-    @m = RubyGraph::Match.new(@s, 0, @s, 0)
+    @s = MethodTrails::SExp.new([0, [[1], [2]], [[3], [4]], 5, 6])
+    @m = MethodTrails::Match.new(@s, 0, @s, 0)
   end
   def test_head_and_semantic_children
     hsc = []
@@ -301,8 +301,8 @@ end
 
 class TestSemanticsForDeeplyNestedSExp < Test::Unit::TestCase
   def setup
-    @s = RubyGraph::SExp.new([0, 1, [2, [3, 4], [5, 6, [7, 8]], 9], [10, 11], 12])
-    @m = RubyGraph::Match.new(@s, 1, @s, 1)
+    @s = MethodTrails::SExp.new([0, 1, [2, [3, 4], [5, 6, [7, 8]], 9], [10, 11], 12])
+    @m = MethodTrails::Match.new(@s, 1, @s, 1)
   end
   def test_head_and_semantic_children
     hsc = []

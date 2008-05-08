@@ -1,4 +1,4 @@
-class RubyGraph
+class MethodTrails
   module Abbreviate
     
     MAX = 70

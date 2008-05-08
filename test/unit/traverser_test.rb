@@ -6,7 +6,7 @@ require_relative '/../../lib/traverser/traverser'
 
 module TraverserHelper
   def run_traverser
-    t = RubyGraph::Traverser.new(@entire_s_exp)
+    t = MethodTrails::Traverser.new(@entire_s_exp)
     @atoms = []
     @s_exps = []
     t.atom_callback  = lambda do |atom, pos|

@@ -2,7 +2,7 @@ require 'require_relative'
 require_relative '/traverse'
 require_relative '/../classes/s_exp'
 
-class RubyGraph
+class MethodTrails
   class TraverserException < RuntimeError; end
   class Traverser
     

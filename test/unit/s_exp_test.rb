@@ -4,7 +4,7 @@ require_relative '/../../lib/classes/s_exp'
 
 module ShouldBeAnSExp
   def test_should_be_of_s_exp_class
-    assert_equal(RubyGraph::SExp, @s_exp.class)
+    assert_equal(MethodTrails::SExp, @s_exp.class)
   end
   def test_should_respond_to_s_exp?
     assert(@s_exp.respond_to?(:s_exp?))
@@ -25,7 +25,7 @@ end
 
 module ShouldRaiseException
   def test_should_raise_atom_exception
-    assert_raise(RubyGraph::SExpException, &@attempt)
+    assert_raise(MethodTrails::SExpException, &@attempt)
   end
 end
 
@@ -62,7 +62,7 @@ end
 class TestAttemptBuildingSExpFromObject < Test::Unit::TestCase
   def setup
     # Array.new(3, 7) => [7, 7, 7]
-    @attempt = lambda { RubyGraph::SExp.new(3, Object.new) }
+    @attempt = lambda { MethodTrails::SExp.new(3, Object.new) }
   end
   include ShouldRaiseException
 end

@@ -1,4 +1,4 @@
-class RubyGraph
+class MethodTrails
   class Rule
     module Debugging
     

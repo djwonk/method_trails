@@ -2,7 +2,7 @@ require 'pp'
 require 'require_relative'
 require_relative 'dot_output'
 
-class RubyGraph
+class MethodTrails
   module FileHandling
 
     # Returns +input_filename+ with Ruby extension.

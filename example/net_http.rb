@@ -1,9 +1,9 @@
 require 'require_relative'
-require_relative '../lib/ruby_graph'
+require_relative '../lib/method_trails'
 
 class Example
   def self.run(name)
-    rv = RubyGraph.new
+    rv = MethodTrails.new
     rv.input_filename  = "_input/#{name}" # omit the .rb
     rv.dot_filename    =   "_dot/#{name}.dot"
     rv.log_filename    =   "_log/#{name}.log"

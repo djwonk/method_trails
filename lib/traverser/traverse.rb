@@ -2,7 +2,7 @@ require 'require_relative'
 require_relative '/../classes/atom'
 require_relative '/../classes/s_exp'
 
-class RubyGraph
+class MethodTrails
   class Traverser
     module Traverse
 

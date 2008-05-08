@@ -16,7 +16,7 @@
 # s-expressions and atoms are disjoint.
 #
 # Note that s-expressions can represent different things.  In the case
-# of the RubyGraph library, they are used to represent:
+# of the MethodTrails library, they are used to represent:
 #   1. A 'subject' (i.e. the result of a Ripper parsing)
 #   2. A rule (i.e. a specification of a matching rule)
 #

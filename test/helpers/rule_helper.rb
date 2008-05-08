@@ -5,7 +5,7 @@ require_relative '/../../lib/rule/rule'
 module RuleHelper
   
   def new_rule(rule_array)
-    rule = RubyGraph::Rule.new
+    rule = MethodTrails::Rule.new
     rule.s_exp = rule_array.to_s_exp
     rule
   end
@@ -26,7 +26,7 @@ module RuleHelper
   
   # It is somewhat dubious that I am testing 'each_match' directly!
   def wrapper_for_each_match
-    initial = RubyGraph::Match.new(@subject, nil, @subject, nil)
+    initial = MethodTrails::Match.new(@subject, nil, @subject, nil)
     @rule.each_match(@rule.s_exp, @subject, initial) do |match|
       # finalize_captures(match.captured)
       yield(match)

@@ -1,4 +1,4 @@
-class RubyGraph
+class MethodTrails
   module DotOutput
 
     def dot_file_contents(graph)

@@ -4,7 +4,7 @@ require_relative '/../../lib/classes/atom'
 
 module ShouldBeAnAtom
   def test_should_be_of_atom_class
-    assert_equal(RubyGraph::Atom, @atom.class)
+    assert_equal(MethodTrails::Atom, @atom.class)
   end
   def test_should_respond_to_atom?
     assert(@atom.respond_to?(:atom?))
@@ -39,8 +39,8 @@ end
 
 module ShouldNotBeConvertibleToAtom
   def test_should_raise_atom_exception
-    assert_raise(RubyGraph::AtomException) do
-      RubyGraph::Atom.new(@attempted_contents)
+    assert_raise(MethodTrails::AtomException) do
+      MethodTrails::Atom.new(@attempted_contents)
     end
   end
 end
@@ -95,7 +95,7 @@ end
 
 module ShouldRaiseExceptionWhenAttemptingCapture
   def test_should_raise_exception_when_attempting_capture
-    assert_raise(RubyGraph::AtomException) do
+    assert_raise(MethodTrails::AtomException) do
       @atom.capture(@attempted_capture)
     end
   end
@@ -117,21 +117,21 @@ end
 
 class TestNilAtom < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(nil)
+    @atom = MethodTrails::Atom.new(nil)
   end
   include ShouldBeAnAtom
 end
 
 class TestFalseAtom < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(false)
+    @atom = MethodTrails::Atom.new(false)
   end
   include ShouldBeAnAtom
 end
 
 class TestTrueAtom < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(true)
+    @atom = MethodTrails::Atom.new(true)
   end
   include ShouldBeAnAtom
 end
@@ -199,7 +199,7 @@ end
 
 class TestRegularIntegerMatch < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(50)
+    @atom = MethodTrails::Atom.new(50)
   end
   def test_should_match_same_integer
     assert(@atom.match?(50.to_atom))
@@ -215,7 +215,7 @@ end
 
 class TestCapturingIntegerMatch < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(50, true)
+    @atom = MethodTrails::Atom.new(50, true)
   end
   include ShouldMatchAnyInteger
   include ShouldNotMatchAnyString
@@ -225,7 +225,7 @@ end
 
 class TestRegularStringMatch < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new("david")
+    @atom = MethodTrails::Atom.new("david")
   end
   def test_should_match_same_string
     assert(@atom.match?("david".to_atom))
@@ -240,7 +240,7 @@ end
 
 class TestCapturingStringMatch < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new("label", true)
+    @atom = MethodTrails::Atom.new("label", true)
   end
   include ShouldBeACapturingAtom
   include ShouldMatchAnyString
@@ -250,7 +250,7 @@ end
 
 class TestRegularSymbolMatch < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(:cymbal)
+    @atom = MethodTrails::Atom.new(:cymbal)
   end
   def test_should_match_same_symbol
     assert(@atom.match?(:cymbal.to_atom))
@@ -266,7 +266,7 @@ end
 
 class TestCapturingSymbolMatch < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(:cymbal, true)
+    @atom = MethodTrails::Atom.new(:cymbal, true)
   end
   include ShouldBeACapturingAtom
   include ShouldMatchAnySymbol
@@ -276,7 +276,7 @@ end
 
 class TestRegularIntegerCapture < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(23)
+    @atom = MethodTrails::Atom.new(23)
     @attempted_capture = 30.to_atom
   end
   include ShouldRaiseExceptionWhenAttemptingCapture
@@ -285,7 +285,7 @@ end
 
 class TestRegularStringCapture < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new("string")
+    @atom = MethodTrails::Atom.new("string")
     @attempted_capture = "string".to_atom
   end
   include ShouldRaiseExceptionWhenAttemptingCapture
@@ -294,7 +294,7 @@ end
 
 class TestRegularSymbolCapture < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(:symbol)
+    @atom = MethodTrails::Atom.new(:symbol)
     @attempted_capture = :symbol.to_atom
   end
   include ShouldRaiseExceptionWhenAttemptingCapture
@@ -303,7 +303,7 @@ end
 
 class TestCapturingIntegerCapture < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(23, true)
+    @atom = MethodTrails::Atom.new(23, true)
   end
   def test_capturing_integer_should_succeed
     assert_equal(40, @atom.capture(40.to_atom))
@@ -327,7 +327,7 @@ end
 
 class TestCapturingStringCapture < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new("string", true)
+    @atom = MethodTrails::Atom.new("string", true)
   end
   def test_capturing_integer_should_fail
     assert_equal(nil, @atom.capture(40.to_atom))
@@ -351,7 +351,7 @@ end
 
 class TestCapturingSymbolCapture < Test::Unit::TestCase
   def setup
-    @atom = RubyGraph::Atom.new(:symbol, true)
+    @atom = MethodTrails::Atom.new(:symbol, true)
   end
   def test_capturing_integer_should_fail
     assert_equal(nil, @atom.capture(40.to_atom))

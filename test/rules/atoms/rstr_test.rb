@@ -9,7 +9,7 @@ class TestAtoms_RegStr < Test::Unit::TestCase
   end
   def test_rule_is_malformed_so_should_raise_exception
     @subject = ["a", "b"].to_s_exp
-    assert_raise(RubyGraph::RuleException) do
+    assert_raise(MethodTrails::RuleException) do
       @rule.matches(@subject)
     end
   end

@@ -1,4 +1,4 @@
-class RubyGraph
+class MethodTrails
   module Introspect
 
     # Get the names of classes defined in +input_full_filename+.
