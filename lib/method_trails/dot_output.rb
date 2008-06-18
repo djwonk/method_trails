@@ -1,14 +1,58 @@
 class MethodTrails
   module DotOutput
 
+    class OutputGenerator
+      def initialize(graph)
+        @graph = graph
+        @o     = []
+      end
+      attr_accessor :graph, :o
+      
+      def output_classes_and_i_methods
+        if classes_and_i_methods = graph[:classes_and_i_methods]
+          o << "/* Classes and their Instance Methods */"
+          classes_and_i_methods.each_with_index do |hash, i|
+            pairs = hash["class"].zip(hash["def"])
+            hash["class"].uniq.each do |klass|
+              o.concat cluster_start(klass)
+              pairs.find_all { |p| p[0] == klass }.each do |p|
+                o << dot_indent(1) + %{"#{p[1]}" [color=green];}
+              end
+              o.concat cluster_stop
+            end
+          end
+          o << nil
+        end
+      end
+
+      def output_i_methods_and_ids
+        if i_methods_and_ids = graph[:i_methods_and_ids]
+          i_methods_and_ids.each do |hash|
+            pairs = hash["def"].zip(hash["ident"])
+            pairs.each do |pair|
+              o << %{"#{pair[0]}" -> "#{pair[1]}";}
+            end
+          end
+        end
+      end
+      
+      def run
+        output_classes_and_i_methods
+        output_i_methods_and_ids
+      end
+      
+      def to_graph
+        @o
+      end
+      
+      def self.run(graph)
+        new(graph).run.to_graph
+      end
+      
+    end
+
     def dot_file_contents(graph)
-      o = []
-      # output_classes(graph, o)
-      # output_i_methods(graph, o)
-      # output_c_methods(graph, o)
-      output_classes_and_i_methods(graph, o)
-      output_i_methods_and_ids(graph, o)
-      o
+      OutputGenerator.run(graph)
     end
 
     def dot_file_header
