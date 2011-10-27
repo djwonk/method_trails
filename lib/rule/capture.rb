@@ -26,7 +26,7 @@ class MethodTrails
       #   captures  = { "a" => [:class, :module] }
       #   finalize_captures(captures)
       #   @captured = { "a" => [:def, :class, :module], "b" => [:@kw] }
-      # 
+      #
       def finalize_captures(captures)
         return unless captures && !captures.empty?
         @captured ||= {}
@@ -34,7 +34,7 @@ class MethodTrails
           left.dup.concat(right)
         end
       end
-      
+
     end
   end
 end

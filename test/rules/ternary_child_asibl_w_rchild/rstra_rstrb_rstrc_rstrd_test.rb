@@ -10,7 +10,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
         [ :__child,
           :__adjacent_sibling
         ],
-        [ "a", 
+        [ "a",
           "b",
           [ :__child,
             ["c", "d"]
@@ -24,7 +24,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     # Where "a" is guaranteed to be the exact same atom
   end
   def test_simple_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ],
       "c",
@@ -35,7 +35,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_match_tail_index_equals([0])
   end
   def test_mismatch_due_to_parent
-    @subject = 
+    @subject =
     [ "a_different",
       [ "b" ],
       "c",
@@ -44,7 +44,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(0, @rule.matches(@subject))
   end
   def test_mismatch_due_to_1st_child
-    @subject = 
+    @subject =
     [ "a",
       [ "b_different" ],
       "c",
@@ -53,7 +53,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(0, @rule.matches(@subject))
   end
   def test_mismatch_due_to_sibling
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ],
       "c_different",
@@ -62,7 +62,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(0, @rule.matches(@subject))
   end
   def test_mismatch_due_to_2nd_child
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ],
       "c",
@@ -71,7 +71,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(0, @rule.matches(@subject))
   end
   def test_duplicate_1st_child_so_2_matches
-    @subject = 
+    @subject =
     [ "a",
       [ "b", "b" ],
       "c",
@@ -82,7 +82,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_match_tail_index_equals([0, 0])
   end
   def test_duplicate_2nd_child_so_2_matches
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ],
       "c",
@@ -93,7 +93,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_match_tail_index_equals([0, 1])
   end
   def test_duplicate_1st_and_2nd_children_so_4_matches
-    @subject = 
+    @subject =
     [ "a",
       [ "b", "b" ],
       "c",
@@ -104,7 +104,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegStrA_RegStrB_RegStrC_RegS
     assert_match_tail_index_equals([0, 1, 0, 1])
   end
   def test_double_1st_child_triple_2nd_child_so_6_matches
-    @subject = 
+    @subject =
     [ "a",
       [ "b", "b" ],
       "c",

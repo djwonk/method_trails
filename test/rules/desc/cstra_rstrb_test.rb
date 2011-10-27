@@ -8,7 +8,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     @rule = new_rule([:__descendant, ["%a", "b"]])
   end
   def test_child_match
-    @subject = 
+    @subject =
     [ "any",
       [ "b" ]
     ].to_s_exp
@@ -16,7 +16,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_grandchild_match
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "b" ]
@@ -26,7 +26,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_great_grandchild_match
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ :extra,
@@ -38,7 +38,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_duplicate_parent_and_child_so_2_matches
-    @subject = 
+    @subject =
     [ "any1",
       [ "b" ],
       "any2",
@@ -48,7 +48,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any1", "any2"] }, @rule.captured)
   end
   def test_duplicate_parent_and_grandchild_so_2_matches
-    @subject = 
+    @subject =
     [ "any1",
       [ :extra,
         [ "b" ]
@@ -62,7 +62,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any1", "any2"] }, @rule.captured)
   end
   def test_duplicate_child_so_2_matches
-    @subject = 
+    @subject =
     [ "any",
       [ "b", "b" ]
     ].to_s_exp
@@ -70,7 +70,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any", "any"] }, @rule.captured)
   end
   def test_duplicate_grandchild_through_common_child_so_2_matches
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "b", "b" ]
@@ -80,7 +80,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any", "any"] }, @rule.captured)
   end
   def test_duplicate_grandchild_through_different_children_so_2_matches
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "b" ]
@@ -93,7 +93,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any", "any"] }, @rule.captured)
   end
   def test_parent_different_so_no_match_with_child
-    @subject = 
+    @subject =
     [ :different_parent,
       [ "b" ]
     ].to_s_exp
@@ -101,7 +101,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_parent_different_so_no_match_with_grandchild
-    @subject = 
+    @subject =
     [ :different_parent,
       [ :extra,
         [ "b" ]
@@ -111,7 +111,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_child_different_so_no_match
-    @subject = 
+    @subject =
     [ "any",
       [ "different_child" ]
     ].to_s_exp
@@ -119,7 +119,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_grandchild_different_so_no_match
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "different_child" ]
@@ -129,7 +129,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_extra_older_parent_still_1_match_with_child
-    @subject = 
+    @subject =
     [ "any_older",
       "any",
       [ "b" ]
@@ -138,7 +138,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_older_parent_still_1_match_with_grandchild
-    @subject = 
+    @subject =
     [ "any_older",
       "any",
       [ :extra,
@@ -149,7 +149,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_younger_parent_still_1_match_with_child
-    @subject = 
+    @subject =
     [ "any",
       [ "b" ],
       "any_younger"
@@ -158,7 +158,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_younger_parent_still_1_match_with_grandchild
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "b" ],
@@ -169,7 +169,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_older_child_still_1_match_with_child
-    @subject = 
+    @subject =
     [ "any",
       [ "b_older", "b" ]
     ].to_s_exp
@@ -177,7 +177,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_older_grandchild_still_1_match_with_grandchild
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "b_older", "b" ]
@@ -187,7 +187,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_younger_child_still_1_match_with_child
-    @subject = 
+    @subject =
     [ "any",
       [ "b", "b_younger" ]
     ].to_s_exp
@@ -195,7 +195,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any"] }, @rule.captured)
   end
   def test_extra_younger_grandchild_still_1_match_with_grandchild
-    @subject = 
+    @subject =
     [ "any",
       [ :extra,
         [ "b", "b_younger" ]
@@ -214,7 +214,7 @@ class TestDescendant_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(0, @rule.matches(@subject))
   end
   def test_match_among_noise
-    @subject = 
+    @subject =
     [ "noise1",
       "noise2",
       "a",

@@ -8,7 +8,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     @rule = new_rule([:__adjacent_sibling, ["a", "%b"]])
   end
   def test_simplest_match
-    @subject = 
+    @subject =
     [ "a",
       "any"
     ].to_s_exp
@@ -25,7 +25,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_different_older_sibling_so_no_match
-    @subject = 
+    @subject =
     [ "a_different",
       "any"
     ].to_s_exp
@@ -33,7 +33,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_different_younger_sibling_so_no_match
-    @subject = 
+    @subject =
     [ "a",
       :b_different
     ].to_s_exp
@@ -41,7 +41,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_duplicate_older_sibling_now_2_matches
-    @subject = 
+    @subject =
     [ "a",
       "a",
       "any"
@@ -50,7 +50,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal({ "b" => ["a", "any"] }, @rule.captured)
   end
   def test_duplicate_younger_sibling_so_2_matches
-    @subject = 
+    @subject =
     [ "a",
       "any1",
       "any2"
@@ -59,7 +59,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal({ "b" => ["any1"] }, @rule.captured)
   end
   def test_duplicate_sibling_pair_so_2_matches
-    @subject = 
+    @subject =
     [ "a",
       "any1",
       "a",
@@ -69,7 +69,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal({ "b" => ["any1", "any2"] }, @rule.captured)
   end
   def test_duplicating_both_siblings_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       "a",
       "any1",
@@ -89,7 +89,7 @@ class TestAdjacentSibling_RegStrA_CapStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_match_among_noise
-    @subject = 
+    @subject =
     [ "noise1",
       "noise2",
       "a",

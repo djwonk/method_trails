@@ -1,6 +1,6 @@
 module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
   def test_simplest_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",
@@ -11,7 +11,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_parent_different_so_no_match
-    @subject = 
+    @subject =
     [ "different_parent",
       [ "b",
         [ "c",
@@ -22,7 +22,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(0, @rule.matches(@subject))
   end
   def test_child_different_so_no_match
-    @subject = 
+    @subject =
     [ "a",
       [ "different_child",
         [ "c",
@@ -33,7 +33,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(0, @rule.matches(@subject))
   end
   def test_grandchild_different_so_no_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "different_grandchild",
@@ -44,7 +44,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(0, @rule.matches(@subject))
   end
   def test_great_grandchild_different_so_no_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",
@@ -91,7 +91,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_extra_younger_child_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",
@@ -103,7 +103,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_extra_older_grandchild_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c_older",
@@ -115,7 +115,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_extra_younger_grandchild_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",
@@ -127,7 +127,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_extra_older_great_grandchild_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",
@@ -138,7 +138,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_extra_younger_great_grandchild_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",
@@ -149,7 +149,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(1, @rule.matches(@subject))
   end
   def test_parent_too_far_down_to_match
-    @subject = 
+    @subject =
     [ "extra",
       [ "a",
         [ "b",
@@ -162,7 +162,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(0, @rule.matches(@subject))
   end
   def test_child_too_far_down_to_match
-    @subject = 
+    @subject =
     [ "a",
       [ "extra",
         [ "b",
@@ -175,7 +175,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(0, @rule.matches(@subject))
   end
   def test_grandchild_too_far_down_to_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "extra",
@@ -188,7 +188,7 @@ module ShouldBehaveLikeChild_RegStrA_RegStrB_RegStrC_RegStrD
     assert_equal(0, @rule.matches(@subject))
   end
   def test_great_grandchild_too_far_down_to_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         [ "c",

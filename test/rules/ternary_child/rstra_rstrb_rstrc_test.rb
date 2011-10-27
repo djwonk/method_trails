@@ -8,7 +8,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     @rule = new_rule([:__child, ["a", "b", "c"]])
   end
   def test_simplest_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         "c"
@@ -19,7 +19,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     assert_match_tail_index_equals([1])
   end
   def test_simple_mismatch
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         "no_match"
@@ -28,7 +28,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     assert_equal(0, @rule.matches(@subject))
   end
   def test_extra_older_child_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "older",
         "b",
@@ -40,7 +40,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     assert_match_tail_index_equals([2])
   end
   def test_extra_middle_child_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         "middle",
@@ -52,7 +52,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     assert_match_tail_index_equals([2])
   end
   def test_extra_younger_child_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         "c",
@@ -64,7 +64,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     assert_match_tail_index_equals([1])
   end
   def test_parent_too_far_down_so_no_match
-    @subject = 
+    @subject =
     [ "extra",
       [ "a",
         [ "b",
@@ -75,7 +75,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
     assert_equal(0, @rule.matches(@subject))
   end
   def test_match_among_noise
-    @subject = 
+    @subject =
     [ "noise1",
       "noise2",
       "a",
@@ -91,7 +91,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
   end
   def test_duplicate_so_2_matches
     # See ternary_problem.txt
-    @subject = 
+    @subject =
     [ "a",
       [ "b",
         "c"
@@ -101,7 +101,7 @@ class TestTernaryChild_RegStrA_RegStrB_RegStrC < Test::Unit::TestCase
         "c"
       ]
     ].to_s_exp
-    assert_equal(2, @rule.matches(@subject)) 
+    assert_equal(2, @rule.matches(@subject))
   end
   def teardown
     assert_equal(nil, @rule.captured)

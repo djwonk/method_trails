@@ -106,7 +106,7 @@ makes them very flexible. You can construct a simple selector rule such as:
 
     [:__child, "a", "b"]
     # Matches when "b" is the child of "a"
-    
+
 Or a more complicated rule such as:
 
     [[:__child, :__general_sibling], "a", "b", "c"]

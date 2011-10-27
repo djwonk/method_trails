@@ -151,7 +151,7 @@ class TestIntegerToCapturingAtom < Test::Unit::TestCase
   end
   include ShouldBeACapturingAtom
 end
-  
+
 class TestStringToRegularAtom < Test::Unit::TestCase
   def setup
     @atom = "a string".to_atom
@@ -204,7 +204,7 @@ class TestTrueClassToCapturingAtom < Test::Unit::TestCase
     @atom = true.to_atom(false)
   end
   include ShouldBeACapturingAtom
-end  
+end
 
 class TestFalseClassToRegularAtom < Test::Unit::TestCase
   def setup
@@ -218,7 +218,7 @@ class TestFalseClassToCapturingAtom < Test::Unit::TestCase
     @atom = false.to_atom(false)
   end
   include ShouldBeACapturingAtom
-end  
+end
 
 class TestNilClassToRegularAtom < Test::Unit::TestCase
   def setup
@@ -232,13 +232,13 @@ class TestNilClassToCapturingAtom < Test::Unit::TestCase
     @atom = nil.to_atom(false)
   end
   include ShouldBeACapturingAtom
-end  
+end
 
 # --------------------
 
 class TestAttemptBuildingAtomFromArray < Test::Unit::TestCase
   def setup
-    @attempted_contents = [:this, :should, :not, :work] 
+    @attempted_contents = [:this, :should, :not, :work]
   end
   include ShouldNotBeConvertibleToAtom
 end

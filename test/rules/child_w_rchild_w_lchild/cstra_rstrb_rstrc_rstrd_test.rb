@@ -10,7 +10,7 @@ class TestChildWithRightChildWithLeftChild_CapStrA_RegStrB_RegStrC_RegStrD < Tes
     [ :__child,
       [ "%a",
         [ :__child,
-          [ 
+          [
             [ :__child,
               [ "b",
                 "c"

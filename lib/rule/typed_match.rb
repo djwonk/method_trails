@@ -88,9 +88,9 @@ class MethodTrails
             raise RuleException, "Unrecognized type: #{type}"
           end
         end
-        
+
         # include Debugging
-        
+
       end
     end
   end

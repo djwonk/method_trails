@@ -7,7 +7,7 @@ class MethodTrails
         @o     = []
       end
       attr_accessor :graph, :o
-      
+
       def output_classes_and_i_methods
         if classes_and_i_methods = graph[:classes_and_i_methods]
           o << "/* Classes and their Instance Methods */"
@@ -35,20 +35,20 @@ class MethodTrails
           end
         end
       end
-      
+
       def run
         output_classes_and_i_methods
         output_i_methods_and_ids
       end
-      
+
       def to_graph
         @o
       end
-      
+
       def self.run(graph)
         new(graph).run.to_graph
       end
-      
+
     end
 
     def dot_file_contents(graph)
@@ -82,9 +82,9 @@ digraph untitled
 }
       FOOTER
     end
-    
+
     protected
-    
+
     # def output_classes(graph, o)
     #   if classes = graph[:classes]
     #     o << "/* Classes */"
@@ -96,7 +96,7 @@ digraph untitled
     #     o << nil
     #   end
     # end
-    
+
     # def output_i_methods(graph, o)
     #   if i_methods = graph[:i_methods]
     #     o << "/* Instance Methods */"
@@ -120,7 +120,7 @@ digraph untitled
     #     o << nil
     #   end
     # end
-    
+
     def output_classes_and_i_methods(graph, o)
       if classes_and_i_methods = graph[:classes_and_i_methods]
         o << "/* Classes and their Instance Methods */"
@@ -137,7 +137,7 @@ digraph untitled
         o << nil
       end
     end
-    
+
     def output_i_methods_and_ids(graph, o)
       if i_methods_and_ids = graph[:i_methods_and_ids]
         i_methods_and_ids.each do |hash|
@@ -158,16 +158,16 @@ digraph untitled
       o << dot_indent(1) + %{label="#{label}";}
       o << dot_indent(1) + "color=blue;"
     end
-    
+
     def cluster_stop
       @indent -= 1
       o = []
       o << "}"
     end
-    
+
     def dot_indent(x)
       "  " * x
     end
-    
+
   end
 end

@@ -1,7 +1,7 @@
 class MethodTrails
   class AtomException < RuntimeError; end
   class Atom
-    
+
     def atom?; true end
 
     # Capture +atom+
@@ -32,7 +32,7 @@ class MethodTrails
     def capturing?
       @capture_on ? true : false
     end
-    
+
     # Create an atom.
     #   * If +capture_on+ is false, create a regular atom.
     #   * If +capture_on+ is true, create a capturing atom.
@@ -43,7 +43,7 @@ class MethodTrails
       @capture_on = capture_on
       raise AtomException, "#{thing} is invalid" unless self.valid?
     end
-    
+
     def inspect
       if @capture_on
         "%" + @thing.inspect
@@ -51,7 +51,7 @@ class MethodTrails
         @thing.inspect
       end
     end
-    
+
     # Does +self+ match +atom+?
     #
     # Raises error if +atom+ is not a regular atom.
@@ -65,7 +65,7 @@ class MethodTrails
         @thing == atom.value
       end
     end
-    
+
     # Is this a regular atom?
     # A regular atom is used to find a match, but not capture it.
     def regular?
@@ -83,7 +83,7 @@ class MethodTrails
         @thing.to_s
       end
     end
-    
+
     # Atoms are valid if they are one of these kinds of objects:
     #   * Integer, String, Symbol
     #   * TrueClass, FalseClass, NilClass
@@ -94,16 +94,16 @@ class MethodTrails
       else false
       end
     end
-  
+
     def value
       @thing
     end
-    
+
     def ==(atom)
       return false unless atom.respond_to?(:atom?) && atom.atom?
       @thing == atom.value
     end
-    
+
   end
 end
 

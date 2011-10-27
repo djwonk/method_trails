@@ -13,7 +13,7 @@ class MethodTrails
       end
       text.map { |line| line.chomp }
     end
-    
+
     # Reads entire file into memory, as one string
     def read_input_file
       text = nil
@@ -22,7 +22,7 @@ class MethodTrails
       end
       text
     end
-    
+
     def write_log_file(log_contents)
       File.open(log_filename, "w") do |file|
         file.print(log_contents)
@@ -45,8 +45,8 @@ class MethodTrails
         file.print dot_file_footer
       end
     end
-    
+
     include DotOutput
-    
+
   end
 end

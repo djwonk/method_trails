@@ -8,7 +8,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     @rule = new_rule([:__child, ["a", "b"]])
   end
   def test_simplest_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ]
     ].to_s_exp
@@ -17,7 +17,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_match_tail_index_equals([0])
   end
   def test_duplicate_parent_and_child_so_2_matches
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ],
       "a",
@@ -28,7 +28,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_match_tail_index_equals([0, 0])
   end
   def test_duplicate_child_so_2_matches
-    @subject = 
+    @subject =
     [ "a",
       [ "b", "b" ]
     ].to_s_exp
@@ -37,21 +37,21 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_match_tail_index_equals([0, 1])
   end
   def test_parent_different_so_no_match
-    @subject = 
+    @subject =
     [ "different_parent",
       [ "b" ]
     ].to_s_exp
     assert_equal(0, @rule.matches(@subject))
   end
   def test_child_different_so_no_match
-    @subject = 
+    @subject =
     [ "a",
       [ "different_child" ]
     ].to_s_exp
     assert_equal(0, @rule.matches(@subject))
   end
   def test_extra_older_parent_still_1_match
-    @subject = 
+    @subject =
     [ "a_older",
       "a",
       [ "b" ]
@@ -61,7 +61,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_match_tail_index_equals([0])
   end
   def test_extra_younger_parent_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b" ],
       "a_younger"
@@ -71,7 +71,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_match_tail_index_equals([0])
   end
   def test_extra_older_child_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b_older", "b" ]
     ].to_s_exp
@@ -80,7 +80,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_match_tail_index_equals([1])
   end
   def test_extra_younger_child_still_1_match
-    @subject = 
+    @subject =
     [ "a",
       [ "b", "b_younger" ]
     ].to_s_exp
@@ -107,7 +107,7 @@ class TestChild_RegStrA_RegStrB < Test::Unit::TestCase
     assert_equal(0, @rule.matches(@subject))
   end
   def test_match_among_noise
-    @subject = 
+    @subject =
     [ "noise1",
       "noise2",
       "a",
