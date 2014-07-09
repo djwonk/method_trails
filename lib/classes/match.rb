@@ -4,7 +4,7 @@ require_relative '/s_exp'
 
 class MethodTrails
   class MatchException < RuntimeError; end
-  
+
   # A +Match+ is an object passed back from +each_match+ and its family of
   # methods.
   #
@@ -27,7 +27,7 @@ class MethodTrails
   # Rule that caused the match to happen.
   #
   class Match
-    
+
     attr_accessor :captured
 
     # An array of s-expressions that are next in line to be searched if the
@@ -47,7 +47,7 @@ class MethodTrails
     #   captures  = { "a" => ["def", "class"] }
     #   append_captures(captures)
     #   @captured = { "a" => ["const_ref", "def", "class"], "b" => ["var_ref"] }
-    # 
+    #
     def append_captures(captures)
       return unless captures && !captures.empty?
       @captured ||= {}
@@ -69,7 +69,7 @@ class MethodTrails
     #
     # Return value:
     #   * An s-expression
-    # 
+    #
     # Note: The return value is an s-expression, not just an array.
     def head_and_semantic_children
       hsc = [].to_s_exp
@@ -97,7 +97,7 @@ class MethodTrails
       @future     = []
       @captured   = nil
     end
-    
+
     def initialize_copy(orig)
       @head_sibl  = @head_sibl.dup
       @head_index = @head_index
@@ -127,18 +127,18 @@ class MethodTrails
     #
     # Return value:
     #   * An array of one or more s-expressions.
-    # 
+    #
     # Note: The return value is an array, not an s-expression.
     # It is important that the caller iterate through it to get
     # the s-expressions inside.
     def semantic_children # of tail
       @tail_sibl.drop(@tail_index + 1).take_while { |e| e.s_exp? }
     end
-    
+
     def semantic_descendants
       _descendants(semantic_children)
     end
-    
+
     def siblings(including_me=false)
       if including_me
         @tail_sibl
@@ -148,7 +148,7 @@ class MethodTrails
         p
       end
     end
-    
+
     def tail
       @tail_sibl[@tail_index]
     end
@@ -166,10 +166,10 @@ class MethodTrails
         @captured[key] << result
       end
     end
-    
+
     # Not Needed
     # def younger_adjacent_semantic_sibling
-    #   yass = [].to_s_exp 
+    #   yass = [].to_s_exp
     #   yss = younger_semantic_siblings
     #   yass.concat(yss.take(1))
     #   yass.concat(yss.drop(1).take_while { |e| e.s_exp? })
@@ -184,7 +184,7 @@ class MethodTrails
     #
     # Return value:
     #   * An s-expression
-    # 
+    #
     # Note: The return value is an s-expression, not just an array.
     def younger_semantic_siblings # of tail
       yss = [].to_s_exp
@@ -193,7 +193,7 @@ class MethodTrails
       # I don't know why but the following does not work:
       # @tail_sibl.drop(@tail_index + 1).drop_while { |e| e.s_exp? }.to_s_exp
     end
-    
+
     def younger_siblings
       @tail_sibl.drop(@tail_index + 1)
       # @tail_sibl[(@tail_index + 1) .. -1]
@@ -208,9 +208,9 @@ class MethodTrails
       @captured   == m.captured &&
       @future     == m.future
     end
-    
+
     protected
-    
+
     # Find descendants of +s_exp+.
     def _descendants(s_exp)
       result = []
@@ -239,7 +239,7 @@ class MethodTrails
         raise "tail_index must be an Atom"      unless tail_sibl[tail_index].atom?
       end
     end
-    
-  end 
-    
+
+  end
+
 end

@@ -1,8 +1,8 @@
 class MethodTrails
   module Abbreviate
-    
+
     MAX = 70
-    
+
     def abbrev(obj, max = MAX)
       s = obj.inspect
       if s.length <= max

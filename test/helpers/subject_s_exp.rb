@@ -1,7 +1,7 @@
 require 'require_relative'
 require_relative '/../../lib/classes/s_exp'
 
-SUBJECT_S_EXP = 
+SUBJECT_S_EXP =
 [:program,
  [
   [:class,

@@ -10,7 +10,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
         [ :__child,
           :__adjacent_sibling
         ],
-        [ :a, 
+        [ :a,
           "%b",
           [ :__child,
             [:c, "%d"]
@@ -20,7 +20,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     )
   end
   def test_simple_match
-    @subject = 
+    @subject =
     [ :a,
       [ "b1" ],
       :c,
@@ -32,7 +32,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0])
   end
   def test_mismatch_due_to_parent
-    @subject = 
+    @subject =
     [ :a_different,
       [ "b1" ],
       :c,
@@ -42,7 +42,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     assert_equal(nil, @rule.captured)
   end
   def test_mismatch_due_to_1st_child
-    @subject = 
+    @subject =
     [ :a,
       [ :b_different ],
       :c,
@@ -52,7 +52,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     assert_equal(nil, @rule.captured)
   end
   def test_mismatch_due_to_sibling
-    @subject = 
+    @subject =
     [ :a,
       [ "b1" ],
       :c_different,
@@ -62,7 +62,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     assert_equal(nil, @rule.captured)
   end
   def test_mismatch_due_to_2nd_child
-    @subject = 
+    @subject =
     [ :a,
       [ "b1" ],
       :c,
@@ -72,7 +72,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     assert_equal(nil, @rule.captured)
   end
   def test_duplicate_1st_child_so_2_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1", "b2" ],
       :c,
@@ -87,7 +87,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 0])
   end
   def test_duplicate_2nd_child_so_2_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1" ],
       :c,
@@ -102,7 +102,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 1])
   end
   def test_triplicate_1st_child_so_3_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1", "b2", "b3" ],
       :c,
@@ -117,7 +117,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 0])
   end
   def test_triplicate_2nd_child_so_3_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1" ],
       :c,
@@ -132,7 +132,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 1])
   end
   def test_4x_1st_child_so_4_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1", "b2", "b3", "b4" ],
       :c,
@@ -147,7 +147,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 0])
   end
   def test_4x_2nd_child_so_4_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1" ],
       :c,
@@ -162,7 +162,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 1])
   end
   def test_duplicate_1st_and_2nd_children_so_4_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1", "b2" ],
       :c,
@@ -177,7 +177,7 @@ class TestTernaryChildAdjacentSiblingWithRightChild_RegSymA_CapStrB_RegSymC_CapS
     # assert_match_tail_index_equals([0, 1, 0, 1])
   end
   def test_double_1st_child_triple_2nd_child_so_6_matches
-    @subject = 
+    @subject =
     [ :a,
       [ "b1", "b2" ],
       :c,

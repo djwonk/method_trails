@@ -13,7 +13,7 @@ class MethodTrails
         r.s_exp = s_exp.to_s_exp
         r
       end
-      
+
     end
   end
 end

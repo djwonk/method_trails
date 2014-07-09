@@ -8,7 +8,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     @rule = new_rule([:__general_sibling, ["%a", "b"]])
   end
   def test_simplest_match
-    @subject = 
+    @subject =
     [ "any",
       "b"
     ].to_s_exp
@@ -33,10 +33,10 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(1, @rule.matches(@subject))
     assert_equal({ "a" => ["any"] }, @rule.captured)
     assert_match_head_index_equals([0])
-    assert_match_tail_index_equals([0]) 
+    assert_match_tail_index_equals([0])
   end
   def test_different_older_sibling_so_no_match
-    @subject = 
+    @subject =
     [ :a_different,
       "b"
     ].to_s_exp
@@ -44,7 +44,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_different_younger_sibling_so_no_match
-    @subject = 
+    @subject =
     [ "a",
       "b_different"
     ].to_s_exp
@@ -52,7 +52,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_duplicate_older_sibling_means_2_matches
-    @subject = 
+    @subject =
     [ "any1",
       "any2",
       "b"
@@ -61,7 +61,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any1", "any2"] }, @rule.captured)
   end
   def test_duplicate_younger_sibling_means_3_matches
-    @subject = 
+    @subject =
     [ "any",
       "b",
       "b"
@@ -70,7 +70,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any", "any", "b"] }, @rule.captured)
   end
   def test_duplicate_sibling_pair_leads_to_4_matches
-    @subject = 
+    @subject =
     [ "any1",
       "b",
       "any2",
@@ -80,7 +80,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal({ "a" => ["any1", "any1", "b", "any2"] }, @rule.captured)
   end
   def test_duplicating_both_siblings_leads_to_4_matches
-    @subject = 
+    @subject =
     [ "any1",
       "any2",
       "b",
@@ -100,7 +100,7 @@ class TestGeneralSibling_CapStrA_RegStrB < Test::Unit::TestCase
     assert_equal(nil, @rule.captured)
   end
   def test_match_among_noise
-    @subject = 
+    @subject =
     [ :noise1,
       :noise2,
       "any",

@@ -10,7 +10,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
         [ :__child,
           :__adjacent_sibling
         ],
-        [ :a, 
+        [ :a,
           [ :__child,
             [ :b,
               "%l"
@@ -30,7 +30,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     )
   end
   def test_simplest_match
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -44,7 +44,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => ["c1"], "r" => ["p1"] }, @rule.captured)
   end
   def test_parent_mismatch
-    @subject = 
+    @subject =
     [ :a_wrong,
       [ :b,
         [ "c1" ]
@@ -58,7 +58,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(nil, @rule.captured)
   end
   def test_child_mismatch
-    @subject = 
+    @subject =
     [ :a,
       [ :b_wrong,
         [ "c1" ]
@@ -72,7 +72,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(nil, @rule.captured)
   end
   def test_grandchild_mismatch
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ :c_wrong ]
@@ -86,7 +86,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(nil, @rule.captured)
   end
   def test_sibling_mismatch
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -100,7 +100,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(nil, @rule.captured)
   end
   # def test_ruin_sibling_adjacency_so_mismatch
-  #   @subject = 
+  #   @subject =
   #   [ :a,
   #     [ :b,
   #       [ "c1" ]
@@ -115,7 +115,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
   #   assert_equal(nil, @rule.captured)
   # end
   def test_sibling_child_mismatch
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -129,7 +129,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(nil, @rule.captured)
   end
   def test_sibling_grandchild_mismatch
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -143,7 +143,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(nil, @rule.captured)
   end
   def test_2x_grandchild_so_2_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", "c2" ]
@@ -157,7 +157,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => %w(c1 c2), "r" => %w(p1 p1) }, @rule.captured)
   end
   def test_3x_grandchild_so_3_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", "c2", "c3" ]
@@ -171,7 +171,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => %w(c1 c2 c3), "r" => %w(p1 p1 p1) }, @rule.captured)
   end
   def test_4x_grandchild_so_4_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", "c2", "c3", "c4" ]
@@ -185,7 +185,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => %w(c1 c2 c3 c4), "r" => %w(p1 p1 p1 p1) }, @rule.captured)
   end
   def test_2x_sibling_grandchild_so_2_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -199,7 +199,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => %w(c1 c1), "r" => %w(p1 p2) }, @rule.captured)
   end
   def test_3x_sibling_grandchild_so_3_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -213,7 +213,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => %w(c1 c1 c1), "r" => %w(p1 p2 p3) }, @rule.captured)
   end
   def test_4x_sibling_grandchild_so_4_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1" ]
@@ -227,7 +227,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal({ "l" => %w(c1 c1 c1 c1), "r" => %w(p1 p2 p3 p4) }, @rule.captured)
   end
   def test_2x_grandchild_3x_sibling_grandchild_so_6_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", "c2" ]
@@ -244,7 +244,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(cap, @rule.captured)
   end
   def test_3x_grandchild_2x_sibling_grandchild_so_6_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", "c2", "c3" ]
@@ -261,7 +261,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(cap, @rule.captured)
   end
   def test_3x_grandchild_3x_sibling_grandchild_so_9_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", "c2", "c3" ]
@@ -278,7 +278,7 @@ class TestTernaryChildAdjacentSiblingWithRightchild_RegStrA_RegStrB_RegStrC_RegS
     assert_equal(cap, @rule.captured)
   end
   def test_noisy_3x_left_3x_right_so_9_matches
-    @subject = 
+    @subject =
     [ :a,
       [ :b,
         [ "c1", :noise_1, "c2" ],

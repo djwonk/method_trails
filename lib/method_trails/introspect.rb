@@ -11,7 +11,7 @@ class MethodTrails
         # require input_filename
       end
     end
-    
+
     # Get methods defined on +klasses+.
     def get_methods(klasses)
       m = {}
@@ -29,9 +29,9 @@ class MethodTrails
       end
       m
     end
-    
+
     protected
-    
+
     # Remembers classes defined during block.
     def record_class_definitions
       extant, novel = [], []

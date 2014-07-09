@@ -3,7 +3,7 @@ require_relative '/../../lib/classes/s_exp'
 require_relative '/../../lib/rule/rule'
 
 module RuleHelper
-  
+
   def new_rule(rule_array)
     rule = MethodTrails::Rule.new
     rule.s_exp = rule_array.to_s_exp
@@ -21,9 +21,9 @@ module RuleHelper
       assert_equal(values.next, match.tail_index)
     end
   end
-  
+
   protected
-  
+
   # It is somewhat dubious that I am testing 'each_match' directly!
   def wrapper_for_each_match
     initial = MethodTrails::Match.new(@subject, nil, @subject, nil)
@@ -32,5 +32,5 @@ module RuleHelper
       yield(match)
     end
   end
-  
+
 end

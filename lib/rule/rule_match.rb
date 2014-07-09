@@ -20,7 +20,7 @@ class MethodTrails
       #
       # Return value:
       #   Using the block (+b+) means that the return value is not needed.
-      # 
+      #
       # More information:
       #
       #   Note that the +rule_s_exp+ drives the process.  There is no need
@@ -50,14 +50,14 @@ class MethodTrails
       end
 
       protected
-      
+
       # Process untyped +rule+ directly.  Untyped means that +rule+ does
       # not contain a type such as :__child, :__descendant, or so on.
       #
       # Parameters:
       #   +rule+    : s-expression for a Rule (or portion of a Rule)
       #   +subject+ : the subject being explored (SExp)
-      #   +match+   : Match object, stores information about the match 
+      #   +match+   : Match object, stores information about the match
       #   +b+       : called for each match (block or lambda)
       #
       # (To use recursion lingo, this is the base case of +each_match+.)
@@ -69,7 +69,7 @@ class MethodTrails
           raise RuleException, "Malformed rule"
         end
       end
-      
+
       # Process +rule+ that is only one atom.
       #
       # Parameters:
@@ -93,7 +93,7 @@ class MethodTrails
           end
         end
       end
-      
+
       # Break apart +rule+ into sub-rules.
       #
       # Parameters:
@@ -173,7 +173,7 @@ class MethodTrails
           end
         end
       end
-      
+
       # Ensure that type takes the form of [:__type_1, :__type_2]
       #
       # Parameters:
@@ -190,7 +190,7 @@ class MethodTrails
 
       # One of the most important ways that rule types differ is their
       # "future".  In other words, what does a rule look forward to?
-      # 
+      #
       # Let me explain:
       #   * :__child      looks for semantic children
       #   * :__descendant looks for semantic descendants
@@ -234,11 +234,11 @@ class MethodTrails
           yield(element, i)
         end
       end
-      
+
       include TypedMatch
       # include Abbreviate
       # include Debugging
-      
+
     end
   end
 end

@@ -4,22 +4,22 @@ require_relative '/atom'
 class MethodTrails
   class SExpException < RuntimeError; end
   class SExp < Array
-    
+
     attr_accessor :disable_capturing
-    
+
     def atom?; false end
 
     # Return all children that are atoms
     def atoms
       self.find_all { |x| x.atom? }
     end
-    
+
     def initialize(*args)
       super
       @disable_capturing = false
       convert
     end
-    
+
     # Do a depth-first search to make sure that all elements are
     # either Atom or SExp objects.
     def valid?
@@ -34,7 +34,7 @@ class MethodTrails
         end
       end
     end
-    
+
     # Return a pretty representation, i.e. indented nicely.
     def pretty
       @d = 0
@@ -52,9 +52,9 @@ class MethodTrails
     def s_exps
       self.find_all { |x| x.s_exp? }
     end
-    
+
     protected
-    
+
     def _pretty(s_exp)
       o = ""
       o << _indent(@d) + "[\n"
@@ -72,7 +72,7 @@ class MethodTrails
       o << _indent(@d) + "]\n"
       o
     end
-    
+
     def _indent(depth)
       "  " * depth
     end
@@ -96,17 +96,17 @@ class MethodTrails
       end
       raise SExpException, "Internal error" unless self.valid?
     end
-    
+
   end
 end
 
 class Array
-  
+
   def to_s_exp(disable_capturing = false)
     s_exp = MethodTrails::SExp.new
     s_exp.disable_capturing = disable_capturing
     s_exp.replace(self)
     s_exp
   end
-  
+
 end

@@ -1,8 +1,8 @@
 # ===== INTRODUCTION =====
 #
 # S-expressions are a kind of data structure.  They have a lot of
-# associated meaning.  
-# 
+# associated meaning.
+#
 # However, at a literal level, you can think of them as arrays.  In this
 # library, s-expressions are represented as arrays -- arrays with an
 # arbitrary number of nested arrays inside it.
@@ -57,7 +57,7 @@
 #      have semantic siblings or semantic children, by definition.
 #      However, arrays can be interpreted at a higher level.  This brings
 #      us to our next data structure.
-#    
+#
 #   2. An s-expression (resulting from parsing Ruby code)
 #
 #      This data structure happens, in this program, to be implemented

@@ -8,7 +8,7 @@ class MethodTrails
   attr_accessor :input_filename
   attr_accessor :dot_filename
   attr_accessor :s_exp_filename
-  
+
   # Reads Ruby file from +input_filename+.  Parses and processes the file.
   # Saves results to +dot_filename+ in GraphViz format.
   def process
@@ -18,9 +18,9 @@ class MethodTrails
     dot_data   = get_method_calls(s_exp)
     write_dot_file(dot_data)
   end
-  
+
   protected
-  
+
   include FileHandling
   include MethodCalls
   include Parser

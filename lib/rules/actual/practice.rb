@@ -4,7 +4,7 @@ require_relative '/../factory'
 class MethodTrails
   class Rules
     module Practice
-      
+
       def self.rules
         rs = []
         [
@@ -15,9 +15,9 @@ class MethodTrails
       end
 
       protected
-      
+
       extend Factory
-      
+
       def self.rule_p1
         rule_factory "P1",
           %{:const_ref > (:@const + %s)},

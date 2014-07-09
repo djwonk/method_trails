@@ -219,7 +219,7 @@ class TestSemantics_0_1_2n < Test::Unit::TestCase
   end
   include SemanticSiblingsShouldBeCorrectFor_0_1_2_Examples
 end
- 
+
 class TestSemantics_0_1n_2 < Test::Unit::TestCase
   def setup
     @s = MethodTrails::SExp.new([0, [[1], 2], 3, 4, [5, 6]])

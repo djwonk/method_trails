@@ -32,7 +32,7 @@ class MethodTrails
     #
     #   Or another example:
     #
-    #   { :i_methods_and_ids => 
+    #   { :i_methods_and_ids =>
     #     [
     #       {
     #         "ident" => ["announce_song", "gets_quieter"],
@@ -40,7 +40,7 @@ class MethodTrails
     #       }
     #     ]
     #   }
-    # 
+    #
     def get_method_calls(s_exp)
       raise "SExp expected" unless s_exp.s_exp?
       t = Traverser.new(s_exp)
@@ -58,9 +58,9 @@ class MethodTrails
       write_log_file(@log)
       @graph
     end
-    
+
     protected
-    
+
     # Rules do not change "on the fly", so cache them.
     RULES = Rules.list
 
@@ -73,13 +73,13 @@ class MethodTrails
         end
       end
     end
-    
+
     def clear_captures
       RULES.find_all do |rule|
         rule.clear_captured!
       end
     end
-    
+
     include Logging
 
   end

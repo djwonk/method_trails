@@ -10,7 +10,7 @@ MethodTrails TODO
   `$ trails -h`
 
   `# Get help`
-  
+
 2. Create and add it to 'Get It' section in README
 
   `$ sudo gem install djwonk-method-trails`

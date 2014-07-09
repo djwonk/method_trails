@@ -6,7 +6,7 @@ end
 
 class TheWorld
   include PlanetLike
-  
+
   def self.bizarro
     "The Bizarro World"
   end

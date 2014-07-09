@@ -30,7 +30,7 @@ class MethodTrails
         @n += 1
         $debug_line = @n
       end
-      
+
     end
   end
 end

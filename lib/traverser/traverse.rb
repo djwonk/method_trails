@@ -13,7 +13,7 @@ class MethodTrails
       #   * s_exp_callback
       #
       # Parameters:
-      #   * +s_exp+    : subject s-expression 
+      #   * +s_exp+    : subject s-expression
       #   * +position+ : tracks our position relative to @entire_s_exp
       #
       # TODO: may need +label+
@@ -42,14 +42,14 @@ class MethodTrails
           end
         end
       end
-      
+
       protected
-      
+
       def traverse_atom(element, pos)
         # If necessary, we can calculate siblings or other data structure
         self.atom_callback.call(element, pos)
       end
-      
+
       def traverse_s_exp(element, pos)
         self.s_exp_callback.call(element, pos)
         traverse(element, pos)

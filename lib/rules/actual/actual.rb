@@ -4,7 +4,7 @@ require_relative '/../factory'
 class MethodTrails
   class Rules
     module Actual
-      
+
       def self.rules
         rs = []
         [
@@ -18,9 +18,9 @@ class MethodTrails
       end
 
       protected
-      
+
       extend Factory
-      
+
       # Find the names of all classes
       def self.find_class_names
         rule_factory(:classes,
@@ -46,7 +46,7 @@ class MethodTrails
         rule_factory(:classes_and_i_methods,
           %{},
           [ [:__child, :__adjacent_sibling],
-            [ :class, 
+            [ :class,
               [ :__child, # :__child
                 [ :const_ref,
                   [ :__adjacent_sibling,
@@ -76,7 +76,7 @@ class MethodTrails
             ]
           ])
       end
-      
+
       # Find the names of all instance methods in a class
       def self.find_instance_methods
         rule_factory(:i_methods,
@@ -103,7 +103,7 @@ class MethodTrails
             ]
           ])
       end
-      
+
       # Find the names of all class methods in a class
       # %{:class > (:body_stmt > (:defs > (:@ident + %def)))}
       def self.find_class_methods
@@ -132,7 +132,7 @@ class MethodTrails
           ]
         ])
       end
-      
+
       # Finds some identifiers in an instance method
       # (But it does not find 'jump' out of 'm.jump')
       def self.rule_4a

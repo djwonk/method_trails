@@ -1,7 +1,7 @@
 class MethodTrails
   class Rule
     module Debugging
-    
+
       def dputs(level, string)
         return
         # $debug_line ||= 0

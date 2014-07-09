@@ -12,7 +12,7 @@ class MethodTrails
   # also capture a variable in a match so that you can use it later.
   #
   class Rule
-    
+
     # The rule in s-expression format.
     #
     # For example:
@@ -25,15 +25,15 @@ class MethodTrails
     #   ].to_s_exp
     #
     attr_accessor :s_exp
-    
+
     # In the future, I hope to allow a Rule to be specified in a more
     # compact form, such as ":class > :const_ref"
     attr_accessor :name
-    
+
     # An identifier for the Rule.  Preferably short.  May be used for
     # console logging and output.
     attr_accessor :label
-    
+
     # Does the subject (+subject_s_exp+) match the Rule one or more times?
     def match?(subject)
       self.matches(subject) > 0
@@ -55,7 +55,7 @@ class MethodTrails
       end
       matches
     end
-    
+
     # Create a copy of +match+ while setting new values for +tail_sibl+
     # and +tail_index+.  Preserves values such as +head_sibl+, +head_index+,
     # and +captures+.
@@ -74,7 +74,7 @@ class MethodTrails
     # Note that there may also be captured variables -- these are side
     # effects, not tied to the return value.
     include Capture
-  
+
     # In the future, Rule may be specified in a more compact form, such as
     # ":class > :const_ref".
     #
